@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "744981190133",
+    "firebase_url": "https://native-app-cca2d-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "native-app-cca2d",
+    "storage_bucket": "native-app-cca2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744981190133:android:9e733764b80dbb5d6abcbc",
+        "android_client_info": {
+          "package_name": "com.contactapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744981190133-qr7ku2s7va2p5152jb5um7dr4u7cj1lv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5_Wx7IQHSdk8kdwZ-7I-5NPdQqiYq4JM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744981190133-qr7ku2s7va2p5152jb5um7dr4u7cj1lv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744981190133:android:61ca0e4a561cb98c6abcbc",
+        "android_client_info": {
+          "package_name": "com.cws"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744981190133-qr7ku2s7va2p5152jb5um7dr4u7cj1lv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5_Wx7IQHSdk8kdwZ-7I-5NPdQqiYq4JM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744981190133-qr7ku2s7va2p5152jb5um7dr4u7cj1lv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:744981190133:android:e072ca36ab020e7d6abcbc",
+        "android_client_info": {
+          "package_name": "com.school"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "744981190133-qr7ku2s7va2p5152jb5um7dr4u7cj1lv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5_Wx7IQHSdk8kdwZ-7I-5NPdQqiYq4JM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "744981190133-qr7ku2s7va2p5152jb5um7dr4u7cj1lv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
