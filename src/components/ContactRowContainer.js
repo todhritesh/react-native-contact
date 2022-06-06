@@ -34,7 +34,7 @@ const NotificationScreen = () => {
       backgroundColor: 'red',
       flex: 1,
       marginTop:10,
-      paddingBottom:300
+      paddingBottom:height
     },
     backTextWhite: {
       color: '#FFF',
