@@ -3,11 +3,9 @@ import React,{useState} from 'react'
 import Entypo from "react-native-vector-icons/Entypo"
 import {firebase} from "@react-native-firebase/database"
 
-const ModalForm = ({openForm,setOpenForm}) => {
+const EditModal = ({openForm,setOpenForm,setEditName,setEditNumber,setEditKey,editName,editNumber,editKey}) => {
     const db = firebase.app().database("https://native-app-cca2d-default-rtdb.asia-southeast1.firebasedatabase.app/")
     const {height,width} = useWindowDimensions()
-    const [name,setName] = useState("")
-    const [number,setNumber] = useState("")
     let formData = {}
     const styles = StyleSheet.create({
         modal:{
@@ -47,14 +45,15 @@ const ModalForm = ({openForm,setOpenForm}) => {
     })
     function handleSubmit(){
         formData = {
-            name,number
+            name:editName,number:editNumber
         }
-        const newRef = db.ref("contacts").push();
-        newRef.set(formData).then(()=>{
+        const newRef = db.ref("contacts/"+editKey)
+        newRef.update(formData).then(()=>{
             console.log(formData)
         })
-        setName("")
-        setNumber("")
+        setEditName("")
+        setEditNumber("")
+        setEditKey("")
         setOpenForm(false)
     }
   return (
@@ -67,15 +66,15 @@ const ModalForm = ({openForm,setOpenForm}) => {
         <View style={styles.modal} >
             <View style={styles.modalBody}>
                 <View style={styles.fieldContianer}>
-                    <TouchableOpacity onPress={()=>setOpenForm(false)} style={{alignItems:"flex-end"}} activeOpacity={.7}>
+                    <TouchableOpacity onPress={()=>{setOpenForm(false);setEditKey("");setEditName("");setEditNumber("")}} style={{alignItems:"flex-end"}} activeOpacity={.7}>
                         <Entypo name="cross" size={30} color="white" />
                     </TouchableOpacity>
                     <Text style={styles.label}>Contact name</Text>
-                    <TextInput onChangeText={(val)=>setName(val)} style={styles.input} />
+                    <TextInput onChangeText={(val)=>setEditName(val)} value={editName} style={styles.input} />
                 </View>
                 <View style={styles.fieldContianer}>
                     <Text style={styles.label}>Phone number</Text>
-                    <TextInput onChangeText={(val)=>setNumber(val)} style={styles.input} />
+                    <TextInput onChangeText={(val)=>setEditNumber(val)} value={editNumber} style={styles.input} />
                 </View>
                 <View style={[styles.fieldContianer,{marginBottom:-1}]}>
                     <TouchableOpacity onPress={()=>handleSubmit()} activeOpacity={.7} >
@@ -88,4 +87,4 @@ const ModalForm = ({openForm,setOpenForm}) => {
   )
 }
 
-export default ModalForm
+export default EditModal

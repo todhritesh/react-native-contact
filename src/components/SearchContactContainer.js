@@ -7,8 +7,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   StatusBar,
-  useWindowDimensions,
-  ScrollView
+  useWindowDimensions
 } from 'react-native';
 import EditModal from './EditModal';
 import { Avatar} from "native-base";
@@ -18,7 +17,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Entypo from 'react-native-vector-icons/Entypo';
 import { useNavigation } from '@react-navigation/native';
 
-const NotificationScreen = () => {
+const SearchContactContainer = ({listData,setListData,tempData,setTempData}) => {
   const {navigate} = useNavigation()
   const [editName,setEditName] = useState("");
   const [editNumber , setEditNumber] = useState("");
@@ -26,7 +25,6 @@ const NotificationScreen = () => {
   const [openEdit,setOpenEdit] = useState(false)
   const {height,width} = useWindowDimensions();
   const db = firebase.app().database("https://native-app-cca2d-default-rtdb.asia-southeast1.firebasedatabase.app/")
-  const [listData, setListData] = useState([]);
 
   const styles = StyleSheet.create({
     container: {
@@ -34,7 +32,7 @@ const NotificationScreen = () => {
       backgroundColor: 'red',
       flex: 1,
       marginTop:10,
-      paddingBottom:300
+      height:height+300
     },
     backTextWhite: {
       color: '#FFF',
@@ -130,10 +128,19 @@ const NotificationScreen = () => {
           key: `${item.id}`,
           title: item.name,
           details: item.number,
-        })),
+        }))
       );
+      setTempData(
+        arr.map((item, index) => ({
+          key: `${item.id}`,
+          title: item.name,
+          details: item.number,
+        }))
+      );
+
     })
 },[])
+
 
 const deleteRow = (rowMap, rowKey) => {
   closeRow(rowMap, rowKey);
@@ -141,6 +148,7 @@ const deleteRow = (rowMap, rowKey) => {
   const prevIndex = listData.findIndex(item => item.key === rowKey);
   newData.splice(prevIndex, 1);
   setListData(newData);
+  setTempData(newData);
   db.ref(`contacts/${rowKey}`).remove().then(()=>console.log("deleted from db"));
 };
 
@@ -350,7 +358,7 @@ const deleteRow = (rowMap, rowKey) => {
   };
 
   return (
-    <View style={[styles.container,{backgroundColor:"black",flex:1}]}>
+    <View style={[styles.container,{backgroundColor:"black"}]}>
       <StatusBar barStyle="dark-content"/>
       {/* <StatusBar backgroundColor="#FF6347" barStyle="light-content"/> */}
       <SwipeListView
@@ -374,4 +382,4 @@ const deleteRow = (rowMap, rowKey) => {
   );
 };
 
-export default NotificationScreen;
+export default SearchContactContainer;

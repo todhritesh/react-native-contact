@@ -3,8 +3,11 @@ import React,{useState} from 'react'
 import EntypoIcons from "react-native-vector-icons/Entypo"
 import FontAwesome from "react-native-vector-icons/FontAwesome"
 import ModalForm from './ModalForm'
+import SearchScreenModal from './SearchScreenModal';
+
 
 const ActionRow = () => {
+  const [openSearch,setOpenSearch] = useState(false)
   const [openForm,setOpenForm] = useState(false)
 
     const styles = StyleSheet.create({
@@ -12,7 +15,7 @@ const ActionRow = () => {
             flexDirection:'row',
             justifyContent:'space-between',
             alignItems:'center',
-            paddingBottom:20,
+            paddingBottom:5,
             width:'100%',
             backgroundColor:'#000000'
         },
@@ -38,14 +41,13 @@ const ActionRow = () => {
         <TouchableOpacity onPress={()=>setOpenForm(true)} >
           <EntypoIcons style={styles.rightIcon} name="plus" size={28} color="white"/>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>setOpenSearch(true)} >
           <FontAwesome style={styles.rightIcon} name="search" size={22} color="white"/>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <EntypoIcons style={styles.rightIcon} name="dots-three-vertical" size={22} color="white"/>
         </TouchableOpacity>
       </View>
       <ModalForm openForm={openForm} setOpenForm={setOpenForm} />
+      <SearchScreenModal openSearch={openSearch} setOpenSearch={setOpenSearch} />
+
     </View>
   )
 }

@@ -11,7 +11,8 @@ const FavouriteContact = () => {
             width:'100%',
             borderRadius:20,
             backgroundColor:"#2d3436",
-            padding:10
+            padding:10,
+            marginTop:80
         },
         left:{
 

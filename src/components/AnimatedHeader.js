@@ -7,7 +7,7 @@ import ActionRow from './ActionRow';
 
 const AnimatedHeader = ({ animatedValue }) => {
   const {height,width} = useWindowDimensions()
-  const HEADER_HEIGHT = width<height?(height*40)/100:(height*80)/100;
+  const HEADER_HEIGHT = width<height?(height*45)/100:(height*80)/100;
     const insets = useSafeAreaInsets();
     
     const headerOpacity = React.useState(animatedValue.interpolate({
@@ -17,7 +17,7 @@ const AnimatedHeader = ({ animatedValue }) => {
     }))[0];
     const headerHeight = animatedValue.interpolate({
         inputRange: [0, HEADER_HEIGHT + insets.top],
-        outputRange: [HEADER_HEIGHT + insets.top, insets.top + 50],
+        outputRange: [HEADER_HEIGHT + insets.top, insets.top + 45],
         extrapolate:"clamp"
       });
 
@@ -37,7 +37,7 @@ const AnimatedHeader = ({ animatedValue }) => {
   >
     <Animated.View style={{justifyContent:'center' , alignItems:'center',marginTop:50,opacity:headerOpacity}}>
       <MaterialCommunityIcons name="account-circle"  size={100} color="#f1c40f"/>
-      <Text style={{color:'white',fontSize:25}} >Dhritesh Kumar</Text>
+      <Animated.Text style={{color:'white',fontSize:25,opacity:headerOpacity}} >Dhritesh Kumar</Animated.Text>
     </Animated.View>
     <ActionRow />
   </Animated.View>

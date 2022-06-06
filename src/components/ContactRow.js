@@ -1,10 +1,11 @@
 import { View, Text , StyleSheet } from 'react-native'
 import React from 'react'
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
-import { Directions, Gesture, GestureDetector } from 'react-native-gesture-handler'
+import { Directions, Gesture, GestureDetector , TouchableOpacity } from 'react-native-gesture-handler'
+import { Avatar} from "native-base";
 
 
-const ContactRow = ({name}) => {
+const ContactRow = ({name,number,showNumber,id}) => {
 
   const flingGestureLeft = Gesture.Fling().direction(Directions.LEFT).onEnd(()=>alert("swiped"));
 
@@ -17,6 +18,7 @@ const ContactRow = ({name}) => {
             padding:10,
             borderColor:'black',
             borderBottomWidth:1,
+            
         },
         left:{
 
@@ -26,20 +28,27 @@ const ContactRow = ({name}) => {
         },
         text:{
             color:"white",
-            fontSize:18,
+            fontSize:16,
             fontWeight:"600"
         }
     })
   return (
 <GestureDetector gesture={flingGestureLeft}>
+    {/* <TouchableOpacity onPress={()=>console.log("hello")}> */}
       <View style={styles.container}>
       <View style={styles.left}>
-        <MaterialCommunityIcons name="account-circle" size={33} color="darkorange"/>
+      <Avatar bg="amber.600" size={35} source={{
+          // uri: "https://bit.ly/broken-link"
+        }}>
+            {String(name).toUpperCase()[0]}
+      </Avatar>
       </View>
       <View style={styles.right}>
         <Text style={styles.text}>{name}</Text>
+        {showNumber.key === id && showNumber.status ? <Text style={[styles.text,{fontSize:12}]}>{number}</Text>:null}
       </View>
     </View>
+    {/* </TouchableOpacity> */}
   </GestureDetector>
   )
 }
